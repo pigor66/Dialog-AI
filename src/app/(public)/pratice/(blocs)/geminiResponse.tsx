@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Box, LinearProgress, Paper, Typography } from '@mui/material';
 import HighlightChanges from './translateColorRequest';

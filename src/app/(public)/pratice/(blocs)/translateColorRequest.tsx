@@ -1,3 +1,5 @@
+'use client'
+
 import { Typography } from "@mui/material";
 
 const HighlightChanges = ({ original, corrected }: { original: string; corrected: string }) => {
