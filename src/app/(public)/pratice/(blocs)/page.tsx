@@ -201,7 +201,8 @@ const TranscriptionUI = () => {
   };
 
   const onSpeakNative = () => {
-    if (!transcript) return;
+    if (typeof window === 'undefined' || !transcript) return;
+
 
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(transcript);
@@ -235,7 +236,7 @@ const TranscriptionUI = () => {
   };
 
   useEffect(() => {
-    if (geminiResponse && geminiResponse.response) {
+    if (typeof window !== 'undefined' && geminiResponse?.response) {
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(geminiResponse.response);
       utterance.lang = selectedLanguage;
