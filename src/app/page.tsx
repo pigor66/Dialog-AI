@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar, Box, Button, Card, CardContent, Typography } from "@mui/material";
 import Link from "next/link";
 // import TranscriptionPage from "./pratice/page";
