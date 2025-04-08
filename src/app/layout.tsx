@@ -1,5 +1,5 @@
 import Providers from './providers';
-import './globals.css';
+
 export const metadata = {
   title: 'Inglês com Voz',
   description: 'Aprenda inglês usando reconhecimento de fala',

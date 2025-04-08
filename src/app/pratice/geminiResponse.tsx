@@ -1,8 +1,8 @@
 'use client'
 
 import { Box, LinearProgress, Paper, Typography } from '@mui/material';
+import { GeminiParsedResponse } from './main';
 import HighlightChanges from './translateColorRequest';
-import { GeminiParsedResponse } from './page';
 
 interface TranscriptionUIProps {
   loadingGemini: boolean

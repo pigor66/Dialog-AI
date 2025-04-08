@@ -1,6 +1,6 @@
 'use client';
 
-import TranscriptionUI from "./(blocs)/page";
+import TranscriptionUI from "./main";
 
 
 export default function PracticePage() {
