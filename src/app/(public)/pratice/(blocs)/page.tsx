@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from '@mui/material';
+import { Avatar, Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, Typography } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
 
@@ -285,7 +285,7 @@ const TranscriptionUI = () => {
                 <Select
                   size='small'
                   value={selectedLanguage}
-                  onChange={(e) => setSelectedLanguage(e.target.value)}
+                  onChange={(e: SelectChangeEvent<string>) => setSelectedLanguage(e.target.value)}
                   label="Idioma"
                 >
                   {languages.map((lang) => (
