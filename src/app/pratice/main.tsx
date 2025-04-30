@@ -275,7 +275,7 @@ const TranscriptionUI = () => {
           <Typography variant="h6">{!isListening ? transcript === '' ? 'Clique em iniciar e diga algo' : '' : !transcript ? 'Ouvindo ...' : ''}</Typography>
           <Typography variant="h6">
             {transcript}
-          </Typography>
+          </Typography> 
         </Paper>
         <Box display={'flex'} justifyContent={'center'}>
 
