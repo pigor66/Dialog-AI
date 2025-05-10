@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import {
     Box,
     Button,
@@ -10,25 +10,26 @@ import {
     Stack,
 } from '@mui/material';
 import BackgroundStars from '../../pratice/ParticleBackground';
+import { User } from '@/types/user';
 
 
 export default function RegisterForm() {
 
     
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<User>({
         name: '',
         email: '',
         password: '',
     });
 
-    const handleChange = (event: any) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setForm({
             ...form,
             [event.target.name]: event.target.value,
         });
     };
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log('Form Submitted:', form);
         // Aqui você pode adicionar lógica de autenticação
