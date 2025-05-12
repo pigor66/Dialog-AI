@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import {
     Box,
     Button,
@@ -11,16 +11,32 @@ import {
 } from '@mui/material';
 import BackgroundStars from '../../pratice/ParticleBackground';
 import { User } from '@/types/user';
+import { reqPost } from '@/api/user';
 
 
 export default function RegisterForm() {
 
-    
+
     const [form, setForm] = useState<User>({
         name: '',
         email: '',
         password: '',
+        confirmPassword: '',
     });
+
+    const [passwordMatch, setPasswordMatch] = useState<boolean>(true);
+    const [prepareToSend, setPrepareToSend] = useState<boolean>(true);
+
+
+    useEffect(() => {
+        form.password === form.confirmPassword ? setPasswordMatch(true) : setPasswordMatch(false);
+        if (form.name && form.email && form.password && form.confirmPassword && passwordMatch) {
+            setPrepareToSend(true);
+        }else {
+            setPrepareToSend(false);
+        }
+        console.log(form);
+    }, [form]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setForm({
@@ -29,10 +45,15 @@ export default function RegisterForm() {
         });
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log('Form Submitted:', form);
-        // Aqui você pode adicionar lógica de autenticação
+    const handleSubmit = async () => {
+        if (prepareToSend) {
+            
+            
+            const response = await reqPost(form, "users");
+            console.log('Form Submitted:', response);
+        } else {
+            console.log('Form not submitted', form);
+        }
     };
 
     return (
@@ -55,6 +76,7 @@ export default function RegisterForm() {
                                 label="Nome"
                                 name="name"
                                 fullWidth
+                                required
                                 value={form.name}
                                 onChange={handleChange}
                             />
@@ -63,6 +85,7 @@ export default function RegisterForm() {
                                 name="email"
                                 type="email"
                                 fullWidth
+                                required
                                 value={form.email}
                                 onChange={handleChange}
                             />
@@ -71,10 +94,22 @@ export default function RegisterForm() {
                                 name="password"
                                 type="password"
                                 fullWidth
+                                required
+                                error={!passwordMatch}
                                 value={form.password}
                                 onChange={handleChange}
                             />
-                            <Button type="submit"
+                            <TextField
+                                label="Confirme sua senha"
+                                name="confirmPassword"
+                                type="password"
+                                fullWidth
+                                required
+                                error={!passwordMatch}
+                                value={form.confirmPassword}
+                                onChange={handleChange}
+                            />
+                            <Button onClick={handleSubmit}
                                 variant="outlined"
                                 size="large"
                                 color="primary"

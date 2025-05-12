@@ -13,8 +13,6 @@ import BackgroundStars from '../../pratice/ParticleBackground';
 
 
 export default function LoginForm() {
-
-    
     const [form, setForm] = useState({
         email: '',
         password: '',
@@ -29,8 +27,6 @@ export default function LoginForm() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('Form Submitted:', form);
-        // Aqui você pode adicionar lógica de autenticação
     };
 
     return (
