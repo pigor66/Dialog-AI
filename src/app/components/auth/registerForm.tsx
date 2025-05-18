@@ -8,7 +8,6 @@ interface RegisterFormProps {
     handleSubmit: (form: Register) => Promise<void>;
 };
 
-
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, handleChange, handleSubmit }) => {
 
     return (
